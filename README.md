@@ -1,4 +1,4 @@
-# Scheduler [![Build Status](https://travis-ci.org/jlyon1/scheduler.svg?branch=master)](https://travis-ci.org/jlyon1/scheduler) [![GoDoc](https://godoc.org/github.com/jlyon1/scheduler/scheduler?status.svg)](https://godoc.org/github.com/jlyon1/scheduler/scheduler)
+# Scheduler [![Build Status](https://travis-ci.org/jlyon1/scheduler.svg?branch=master)](https://travis-ci.org/jlyon1/scheduler) [![GoDoc](https://godoc.org/github.com/jlyon1/scheduler/scheduler?status.svg)](https://godoc.org/github.com/jlyon1/scheduler/scheduler) [![Go Report Card](https://goreportcard.com/badge/github.com/jlyon1/scheduler)](https://goreportcard.com/report/github.com/jlyon1/scheduler)
 A execute tasks at a given time, on a recurring schedule, similar to cron, with the ability to create load and save state.
 
 This is being created with the Rensselaer Polytechnic Institute Web Technologies Group's [Shuttle Tracker](https://github.com/wtg/shuttletracker) in mind, To allow tasks like enabling and disabling routes to be run on a scheduled basis.
@@ -39,5 +39,5 @@ func main() {
 	s.Run()
 
 }
-g
+
 ```
