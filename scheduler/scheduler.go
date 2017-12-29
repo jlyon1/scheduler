@@ -10,8 +10,8 @@ import (
 )
 
 type Scheduler struct {
-	Jobs  []Job `json: Jobs`
-	MaxId int   `json: MaxId`
+	Jobs  []Job
+	MaxId int
 }
 
 type Job struct {
@@ -20,7 +20,7 @@ type Job struct {
 	args  []string
 	day   int
 	time  time.Time
-	once  bool        
+	once  bool
 }
 
 //RemoveJob allows you to remove a job by an id
@@ -64,10 +64,8 @@ func New() *Scheduler {
 }
 
 func (s *Scheduler) Export() string {
-	val, err := json.Marshal(s)
-	if err != nil {
-		fmt.Printf("error: ", err.Error())
-	}
+	val, _ := json.Marshal(s)
+
 	return string(val)
 }
 
