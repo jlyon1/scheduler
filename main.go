@@ -1,15 +1,23 @@
 package main
 
 import "fmt"
+import "time"
 import "github.com/jlyon1/scheduler/scheduler"
 
-func printSomething() {
-	fmt.Println("Something")
+func printSomething(s string) {
+	fmt.Println(s)
+}
+func printSomethingElse() {
+	fmt.Println("Something Else")
 }
 
 func main() {
-	fmt.Printf("asdf")
+	fmt.Println("Current Day:", time.Friday)
 	s := scheduler.New()
-	j := scheduler.NewJob(printSomething)
-	s.AddJob(j)
+	j := scheduler.NewJob(printSomething, "heyo").EveryDay().At(time.Now().Add(10 * time.Second))
+
+	fmt.Println("Job Time: ", j.GetExecTime())
+	fmt.Println("Adding Job: ", s.AddJob(j))
+	s.Run()
+
 }
