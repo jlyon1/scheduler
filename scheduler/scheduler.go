@@ -20,7 +20,6 @@ type Job struct{
   args []string
   day int
   time time.Time
-  executed bool
   once bool
 
 }
@@ -30,10 +29,14 @@ func (s *Scheduler) Run(){
   for{
     <-time.After(time.Second/2)
     for idx,_ := range s.jobs{
-      if(time.Now().After(s.jobs[idx].time) && !s.jobs[idx].executed){
-        s.jobs[idx].Invoke()
+      if(time.Now().After(s.jobs[idx].time)){
+        go s.jobs[idx].Invoke()
         if(!s.jobs[idx].once){
-          s.jobs[idx].time = s.jobs[idx].time.AddDate(0,0,1)
+          if(s.jobs[idx].day == 8){
+            s.jobs[idx].time = s.jobs[idx].time.AddDate(0,0,1)
+          }else{
+            s.jobs[idx].time = s.jobs[idx].time.AddDate(0,0,7)
+          }
         }
       }
     }
@@ -76,9 +79,20 @@ func (j *Job)GetExecTime() (time.Time){
   return j.time
 }
 
-//At sets the time of day for the job to be run at
+//At sets the time of day for the job to be run at, which is set to the current
+//day if it is to be run every day, or the specified date
 func (j *Job)At(t time.Time) (*Job){
-  j.time = t
+  j.time = time.Now()
+  daysToAdd := 0
+  duration := t.Sub(j.time)
+  if(int(t.Weekday()) != j.day && j.day != 8){
+    daysToAdd = (j.day - int(t.Weekday()))
+    if(int(t.Weekday()) > j.day){
+      daysToAdd = 7 + daysToAdd
+    }
+  }
+  j.time = j.time.Add(duration)
+  j.time = j.time.AddDate(0,0,daysToAdd)
   return j
 }
 
@@ -93,6 +107,7 @@ func (s *Scheduler)AddJob(j *Job) (int){
   s.jobs = append(s.jobs, *j)
   return j.id
 }
+
 //Invoke runs the function associated with a given job
 func (job *Job) Invoke() {
     v := reflect.ValueOf(job.toRun)

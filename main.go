@@ -14,9 +14,11 @@ func printSomethingElse() {
 func main() {
 	fmt.Println("Current Day:", time.Friday)
 	s := scheduler.New()
-	j := scheduler.NewJob(printSomething, "heyo").EveryDay().At(time.Now().Add(10 * time.Second))
-
+	fmt.Println("Current Time: ", time.Now())
+	j := scheduler.NewJob(printSomething, "Scheduled Print").EveryDay().At(time.Now().Add(2 * time.Second))
 	fmt.Println("Job Time: ", j.GetExecTime())
+	// const longForm = "Jan 2 2006 15:04:05 (MST)"
+	// t, _ := time.Parse(longForm, "Dec 30 2017 13:30:34 (EST)")
 	fmt.Println("Adding Job: ", s.AddJob(j))
 	s.Run()
 
