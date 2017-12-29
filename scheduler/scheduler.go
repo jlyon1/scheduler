@@ -32,7 +32,9 @@ func (s *Scheduler) Run(){
     for idx,_ := range s.jobs{
       if(time.Now().After(s.jobs[idx].time) && !s.jobs[idx].executed){
         s.jobs[idx].Invoke()
-        s.jobs[idx].time = s.jobs[idx].time.AddDate(0,0,1)
+        if(!s.jobs[idx].once){
+          s.jobs[idx].time = s.jobs[idx].time.AddDate(0,0,1)
+        }
       }
     }
   }

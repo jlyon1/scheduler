@@ -5,12 +5,12 @@ This is being created with applications to the Rensselaer Polytechnic Institute 
 
 ### Scope:
 
-- [ ] Support Executing arbitrary functions using a custom type
-- [ ] Execute functions on a recurring basis
+- [X] Support Executing arbitrary functions using a custom type
+- [X] Execute functions on a recurring basis
 - [ ] Ensure they execute, even if the server was off when they were supposed to run
 - [ ] Allow those jobs to easily be removed (by some id)
 - [ ] Persist Jobs over server reboot or application restart
-- [ ] Allow One Time scheduled Jobs
+- [X] Allow One Time scheduled Jobs
 - [ ] Support Daylight Savings time
 
 ## Example
