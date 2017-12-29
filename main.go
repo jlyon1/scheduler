@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"scheduler/scheduler"
+	"github.com/jlyon1/scheduler"
 )
 
 func test() {
