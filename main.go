@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/robfig/cron"
-	// "scheduler/scheduler"
+	"scheduler/scheduler"
 )
 
 func test() {
@@ -11,9 +10,8 @@ func test() {
 }
 
 func main() {
-	c := cron.New()
-	c.AddFunc("@every 1s", func() { fmt.Println("Every hour on the half hour") })
-	c.Start()
+  s := scheduler.New()
+  _ = s
 	for {
 	}
 }
