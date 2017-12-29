@@ -23,7 +23,6 @@ func main() {
 	fmt.Println("Job Time: ", j.GetExecTime())
 	fmt.Println("Adding Job: ", s.AddJob(j))
 	fmt.Println("Adding Job: ", s.AddJob(j2))
-	fmt.Printf("Scheduler: \n", s.Export())
 	s.Run()
 
 }

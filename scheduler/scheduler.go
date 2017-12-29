@@ -15,12 +15,12 @@ type Scheduler struct {
 }
 
 type Job struct {
-	Id    int         `json:id`
-	toRun interface{} `json:toRun`
-	args  []string    `json:args`
-	day   int         `json: day`
-	time  time.Time   `json:time`
-	once  bool        `json:once`
+	Id    int
+	toRun interface{}
+	args  []string
+	day   int
+	time  time.Time
+	once  bool        
 }
 
 //RemoveJob allows you to remove a job by an id
