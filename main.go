@@ -3,6 +3,13 @@ package main
 import "fmt"
 import "github.com/jlyon1/scheduler/scheduler"
 
-func main(){
-  fmt.Printf("asdf");
+func printSomething() {
+	fmt.Println("Something")
+}
+
+func main() {
+	fmt.Printf("asdf")
+	s := scheduler.New()
+	j := scheduler.NewJob(printSomething)
+	s.AddJob(j)
 }
