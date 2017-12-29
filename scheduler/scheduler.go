@@ -43,7 +43,7 @@ func (s *Scheduler) RemoveJob(id int) bool {
 func (s *Scheduler) Run() {
 	for {
 		<-time.After(time.Second / 2)
-		for idx, _ := range s.Jobs {
+		for idx := range s.Jobs {
 			if time.Now().After(s.Jobs[idx].time) {
 				go s.Jobs[idx].Invoke()
 				if !s.Jobs[idx].once {
