@@ -10,7 +10,7 @@ notifications:
   email: false
 
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
+  - go test -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 932a3218-4c4a-4e7a-8449-182010334e5f
