@@ -34,7 +34,7 @@ func TestRun(t *testing.T) {
 
 	s = scheduler.New()
 
-	j := scheduler.NewJob(printSomething, "!").EveryDay().At(time.Now())
+	j := scheduler.NewJob(printSomething, "-").EveryDay().At(time.Now())
 	j2 := scheduler.NewJob(printSomething, "-").EveryDay().At(time.Now().Add(time.Second))
 	s.AddJob(j)
 	s.AddJob(j2)
