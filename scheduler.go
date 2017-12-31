@@ -42,7 +42,7 @@ func (s *Scheduler) RemoveJob(id int) bool {
 //Run instructs the scheduler to start running Jobs on their timed basis
 func (s *Scheduler) Run() {
 	for {
-		<-time.After(time.Second / 2)
+		<-time.After(time.Second / 4)
 		for idx := range s.Jobs {
 			if time.Now().After(s.Jobs[idx].time) {
 				go s.Jobs[idx].Invoke()
@@ -63,6 +63,7 @@ func New() *Scheduler {
 	return &Scheduler{}
 }
 
+//Export Does Nothing right now
 func (s *Scheduler) Export() string {
 	val, _ := json.Marshal(s)
 
